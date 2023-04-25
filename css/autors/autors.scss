@@ -1,0 +1,53 @@
+body {
+  background-color: #e3dede;
+  overflow: hidden
+}
+
+.exit-button{
+   content: ' ';
+
+   position: absolute;
+   width: 50px;
+   height: 50px;
+   top: 0;
+   right: 0;
+
+   background-image: url(../image/close-icon.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 40px 40px;
+}
+
+p{
+   font-size: 1.5rem;
+   font-weight: 500;
+   font-family: cursive;
+   margin-bottom: 10px;
+}
+.container {
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: 15s slidein;
+}
+
+.container>p:nth-child(1){
+  color: #fcec03;
+}
+.container>p:nth-child(3){
+  color: #c6fc03;
+}
+.container>p:nth-child(5){
+  color: #b103fc;
+}
+
+@keyframes slidein {
+  from {
+    margin-top: 100vh
+  }
+
+  to {
+    margin-top: 1%;
+  }
+}

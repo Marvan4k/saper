@@ -1,0 +1,53 @@
+body {
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.play {
+  font-family: "Pixel";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-image: url(../image/icon.png);
+  background-size: 2.8em 2.8em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  font-size: 3.5em;
+  width: 2.8em;
+  height: 2.8em;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.start-game {
+  display: flex;
+}
+.start-game-button {
+  margin: 20px 30px 0px;
+}
+
+.background {
+  position: absolute;
+  top: -8rem;
+  right: -10rem;
+  z-index: -1;
+  rotate: 45deg;
+  width: 50rem;
+  height: 50rem;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+}
