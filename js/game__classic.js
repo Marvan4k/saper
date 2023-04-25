@@ -69,7 +69,7 @@ document.querySelector('.standart').addEventListener('click', () => {
 document.querySelector('.onTime').addEventListener('click', () => {
    document.querySelector('.modeSelectin').style.display = 'none';
    onTime = true;
-   endTimer = 10;
+   endTimer = 300;
 })
 // Добавляем ид элементов не в центре
 function addNoInCenterID(){
