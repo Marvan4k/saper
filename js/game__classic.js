@@ -3,9 +3,9 @@ const cellSpan = `<span oncontextmenu="return false" onmousedown="clickMouse(eve
                   data-clue="false" class="block"></span>`;
 
 // Музыка
-const winMusic = new Audio('../css/music/winMusic.mp3');
-const loseMusic = new Audio('../css/music/loseMusic.mp3');
-const trollMusic = new Audio('../css/music/trollMusic.mp3');
+const winMusic = new Audio('../saper/css/music/winMusic.mp3');
+const loseMusic = new Audio('../saper/css/music/loseMusic.mp3');
+const trollMusic = new Audio('../saper/css/music/trollMusic.mp3');
 
 // Получение данных из настроек
 var setting = JSON.parse(localStorage.getItem('settings'));
