@@ -94,42 +94,54 @@ main {
       margin-bottom: 20px;
    }
    &__input {
-      -webkit-appearance: none;
-      appearance: none;
-      background: transparent;
+      // -webkit-appearance: none;
+      // appearance: none;
+      background: red;
       cursor: pointer;
       width: 15rem;
-      &::-moz-range-thumb {
-         border: none; 
-         border-radius: 0; 
-         background-image: url(../image/bomb.png);
-         background-size: 100% 100%;
-         background-repeat: no-repeat;
-         background-position: center center; 
-         height: 2rem;
-         width: 2rem;
-      }
-      &::-webkit-slider-thumb {
-         -webkit-appearance: none;
-         appearance: none;
-         background-image: url(../image/bomb.png);
-         background-size: 100% 100%;
-         background-repeat: no-repeat;
-         background-position: center center; 
-         height: 2rem;
-         width: 2rem;
-      }
-      &::-webkit-slider-runnable-track, &::-moz-range-track {
-         background: #053a5f;
-         height: 0.5rem;
-      }
-      &:focus {
-         outline: none;
-      }
-      &:focus::-webkit-slider-thumb, &:focus::-moz-range-thumb {
-         border: 1px solid #053a5f;
-         outline: 3px solid #053a5f;
-         outline-offset: 0.125rem;
-      }
+      // &::-moz-range-thumb {
+      //    border: none; 
+      //    border-radius: 0; 
+      //    background-image: url(../image/bomb.png);
+      //    background-size: 100% 100%;
+      //    background-repeat: no-repeat;
+      //    background-position: center center; 
+      //    height: 2rem;
+      //    width: 2rem;
+      // }
+      // &::-webkit-slider-thumb {
+      //    -webkit-appearance: none;
+      //    appearance: none;
+      //    background-image: url(../image/bomb.png);
+      //    background-size: 100% 100%;
+      //    background-repeat: no-repeat;
+      //    background-position: center center; 
+      //    height: 2rem;
+      //    width: 2rem;
+      // }
+      // &::-webkit-slider-runnable-track, &::-moz-range-track {
+      //    background: #053a5f;
+      //    height: 0.5rem;
+      // }
+      // &:focus {
+      //    outline: none;
+      // }
+      // &:focus::-webkit-slider-thumb, &:focus::-moz-range-thumb {
+      //    border: 1px solid #053a5f;
+      //    outline: 3px solid #053a5f;
+      //    outline-offset: 0.125rem;
+      // }
+   }
+}
+
+@media screen and (max-width: 700px) {
+   .settings-game {
+      height: auto;
+      margin-bottom: 20px;
+   }
+   .container {
+      justify-content: normal;
+      align-items: normal;
+      flex-wrap: wrap;
    }
 }
