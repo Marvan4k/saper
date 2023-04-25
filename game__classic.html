@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/zerning.css">
+   <link rel="stylesheet" href="css/game_vanilla/style.css">
+   <link rel="stylesheet" href="font/font.css">
+   <link rel="shortcut icon" href="css/image/icon.png">
+   <title>Saper</title>
+</head>
+
+<body>
+   <div class="modeSelectin">
+      <button class="modeSelectin__item standart">
+         <img src="css/image/lamp.png" alt="">
+         <p>Обычный</p>
+      </button>
+      <button class="modeSelectin__item onTime">
+         <img src="css/image/lamp.png" alt="">
+         <p>На время (5 минут)</p>
+      </button>
+      <button class="modeSelectin__item">
+         <img src="css/image/lamp.png" alt="">
+         <p>В разработке...</p>
+      </button>
+   </div>
+   <div class="container">
+      <div class="field">
+            <span class="field-lose">
+               <p>Game over</p>
+               <button>OK</button>
+            </span>
+            <div class="field-area" oncontextmenu="return false"></div>
+      </div>
+      <div class="information">
+            <div class="information-timer">
+               <div class="information-timer__title">
+                  <p>Таймер</p>
+               </div>
+               <div class="information-timer__container">
+                  <div class="information-timer__item hours">
+                     <div>
+                        <span>00</span>
+                        <p>Часы</p>
+                     </div>
+                     <p>:</p>
+                  </div>
+                  <div class="information-timer__item minutes">
+                     <div>
+                        <span>00</span>
+                        <p>Минуты</p>
+                     </div>
+                     <p>:</p>
+                  </div>
+                  <div class="information-timer__item seconds">
+                     <div>
+                        <span>00</span>
+                        <p>Секунды</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="information-value-miens">
+               <p>Оставшееся количество мин:</p>
+               <span>0</span>
+            </div>
+            <div class="information-buttons">
+               <button class="information__button">
+                  <img src="css/image/restart.png" alt="">
+               </button>
+               <button class="information__lamp">
+                  <img src="css/image/lamp.png" alt="">
+               </button>
+               <a href="index.html" class="information__door">
+                  <img src="css/image/door.png" alt="">
+               </a>
+            </div>
+      </div>
+   </div>
+
+   <script src="js/game__classic.js"></script>
+</body>
+
+</html>

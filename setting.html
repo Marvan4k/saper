@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/zerning.css">
+   <link rel="stylesheet" href="font/font.css">
+   <link rel="stylesheet" href="css/settings/style.css">
+   <link rel="shortcut icon" href="css/image/icon.png">
+   <title>Saper</title>
+</head>
+
+<body>
+   <!-- <audio src="css/music/index.mp3" preload="auto" autoplay></audio> -->
+   <a href="index.html" class="exit-button" onclick="ExitSite()"></a>
+   
+   <main>
+      <div class="container">
+         <div class="settings-game">
+            <p class="settings-game__title">Настройки:</p>
+            <form action="">
+               <p class="settings-game__text">
+                  Размер поля
+               </p>
+               <select name="" id="" class="setting-game-list" required>
+                  <option value="5" class="setting-game-list__item">5x5</option>
+                  <option value="6" class="setting-game-list__item">6x6</option>
+                  <option value="7" class="setting-game-list__item">7x7</option>
+                  <option value="8" class="setting-game-list__item">8x8</option>
+                  <option value="9" class="setting-game-list__item">9x9</option>
+                  <option value="10" class="setting-game-list__item">10x10</option>
+               </select>
+               <p class="settings-game__text">
+                  Количество мин: <span></span>
+               </p>
+               <div class="settings-game-container-input">
+                  <p id="minInput">1</p>
+                  <input type="range" min="1" class="settings-game__input">
+                  <p id="maxInput"></p>
+               </div>
+               <p class="settings-game__text">
+                  Ночной режим:
+               </p>
+               <input type="checkbox" name="" id="inputCheckBox" >
+               <button type="submit" class="settings-game__button" onclick="ExitSite()">Сохранить</button>
+            </form>
+         </div>
+         <div class="field">
+            <div class="field-area" oncontextmenu="return false"></div>
+         </div>
+      </div>
+   </main>
+   <script src="js/settings.js"></script>
+</body>
+
+</html>
