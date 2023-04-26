@@ -73,7 +73,12 @@ document.querySelector('.onTime').addEventListener('click', () => {
 })
 
 function addIdInSystem() {
-   let temp;
+		// Добавление id к span элементам
+		cells.forEach((elem) => {
+			 elem.id = idSpan;
+			 elem.classList.add('hide');
+			 idSpan++;
+		})
    idSpan = 20;
    coordsCell.push(idSpan);
    coordsCell.push(idSpan + (setting.area - 1));
@@ -83,7 +88,6 @@ function addIdInSystem() {
       idLeftCell.push(idSpan + setting.area * i)
       idRightCell.push(idSpan + setting.area*(1+i) - 1)
    }
-
 }
 // Добавляем ид элементов не в центре
 function addNoInCenterID(){
@@ -94,6 +98,9 @@ function addNoInCenterID(){
       idNotInCenter.push(cells[i+90].id);
    }
 }
+
+
+addIdInSystem()
 
 // Проверка соседних клеток
 function checkCell(cell) {
@@ -304,13 +311,6 @@ function clearBomb() {
       elem.textContent = ' ';
    })
 }
-
-// Добавление id к span элементам
-cells.forEach((elem) => {
-   elem.id = idSpan;
-   elem.classList.add('hide');
-   idSpan++;
-})
 
 // Таймер
 // Запуск
@@ -672,5 +672,3 @@ document.addEventListener('keydown', (elem) => {
       window.location.href = 'index.html';
    }
 })
-
-addIdInSystem()
