@@ -44,7 +44,7 @@ let checkBomb2 = false;
 let clue = false;
 let openingCell = true;
 
-let coordsCell = [20, 29, 110, 119];
+let coordsCell = [];
 let coordsLeftUp = [9, 10, 19];
 let coordsRightUp = [10, 11, 21];
 let coordsLeftDown = [19, 29, 30];
@@ -71,6 +71,20 @@ document.querySelector('.onTime').addEventListener('click', () => {
    onTime = true;
    endTimer = 300;
 })
+
+function addIdInSystem() {
+   let temp;
+   idSpan = 20;
+   coordsCell.push(idSpan);
+   coordsCell.push(idSpan + (setting.area - 1));
+   coordsCell.push(idSpan + setting.area * setting.area - setting.area);
+   coordsCell.push(idSpan + setting.area * setting.area - 1);
+   for (let i = coordsCell[0]; i < coordsCell[1]; i++){
+      temp = coordsCell[0] + 1;
+      
+   }
+
+}
 // Добавляем ид элементов не в центре
 function addNoInCenterID(){
    for (let i = 0; i < cells[0].id / 2; i++){
@@ -252,7 +266,7 @@ function checkBomb(cell) {
 }
 // Обновление бомб (Функция)
 function updateBombs() {
-   bombs = generateArrayRandomNumber(20, 120);
+   bombs = generateArrayRandomNumber(20, setting.area*setting.area+20);
    for (let i = 0; i < kolBomb; i++) {
       cells.forEach((elem) => {
          if (elem.id == bombs[i]) {
@@ -658,3 +672,5 @@ document.addEventListener('keydown', (elem) => {
       window.location.href = 'index.html';
    }
 })
+
+addIdInSystem()
