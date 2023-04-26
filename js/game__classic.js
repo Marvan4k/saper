@@ -99,9 +99,6 @@ function addNoInCenterID(){
    }
 }
 
-
-addIdInSystem()
-
 // Проверка соседних клеток
 function checkCell(cell) {
    // Проверка углов
@@ -672,3 +669,6 @@ document.addEventListener('keydown', (elem) => {
       window.location.href = 'index.html';
    }
 })
+
+
+addIdInSystem();
