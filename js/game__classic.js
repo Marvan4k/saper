@@ -101,16 +101,7 @@ function addIdInSystem() {
 }
 
 addIdInSystem();
-// Добавляем ид элементов не в центре
-// function addNoInCenterID() {
-//   for (let i = 0; i < Number(setting.area); i++) {
-//     idNotInCenter.push(cells[i-1].id);
-//     idNotInCenter.push(cells[(i-1) * setting.area].id);
-//     idNotInCenter.push(cells[(i-1) * (setting.area - 1)].id);
-//     idNotInCenter.push(cells[setting.area*setting.area - (i-1)].id);
-//   }
-// }
-// addNoInCenterID()
+
 // Проверка соседних клеток
 function checkCell(cell) {
   let valueArea = Number(setting.area);
@@ -209,7 +200,6 @@ function checkCell(cell) {
 // Добавление цифр на бомбу
 function checkBomb(cell) {
   valueBomb = 0;
-  sum = 0;
   checkActive = false;
   if (cell.classList.value == "field-area") return 0;
 
