@@ -56,8 +56,8 @@ let coordsRight = [10, 11, 21, 30, 31];
 let coordsCenter = [11, 10, 9, 21, 19, 29, 30, 31];
 
 let idNotInCenter = [];
-let idRightCell = [39, 49, 59, 69, 79, 89, 99, 109];
-let idLeftCell = [30, 40, 50, 60, 70, 80, 90, 100];
+let idRightCell = [];
+let idLeftCell = [];
 
 let valueBomb;
 
@@ -79,9 +79,9 @@ function addIdInSystem() {
    coordsCell.push(idSpan + (setting.area - 1));
    coordsCell.push(idSpan + setting.area * setting.area - setting.area);
    coordsCell.push(idSpan + setting.area * setting.area - 1);
-   for (let i = coordsCell[0]; i < coordsCell[1]; i++){
-      temp = coordsCell[0] + 1;
-      
+   for (let i = 1; i < setting.area-1; i++){
+      idLeftCell.push(idSpan + setting.area * i)
+      idRightCell.push(idSpan + setting.area*(1+i) - 1)
    }
 
 }
@@ -101,7 +101,7 @@ function checkCell(cell) {
    coordsCell.forEach((event) => {
       if (Number(cell.id) == event){
          // Левыый верх
-         if (event == 20) {
+         if (event == idSpan) {
             cellHover = 1;
             coordsLeftUp.forEach((coord) => {
                if ((cells[Number(cell.id) - coord].classList.value) == 'block hide bomb') {
@@ -110,7 +110,7 @@ function checkCell(cell) {
             })
          }
          // Правый верх
-         if (event == 29) {
+         if (event == (idSpan + (setting.area - 1))) {
             cellHover = 2;
             coordsRightUp.forEach((coord) => {
                if ((cells[Number(cell.id) - coord].classList.value) == 'block hide bomb') {
@@ -119,7 +119,7 @@ function checkCell(cell) {
             })
          }
          // Левыый низ
-         if (event == 110) {
+         if (event == (idSpan + setting.area * setting.area - setting.area)) {
             cellHover = 3;
             coordsLeftDown.forEach((coord) => {
                if ((cells[Number(cell.id) - coord].classList.value) == 'block hide bomb') {
@@ -128,7 +128,7 @@ function checkCell(cell) {
             })
          }
          // Правый низ
-         if (event == 119) {
+         if (event == (idSpan + setting.area * setting.area - 1)) {
             cellHover = 4;
             coordsRightDown.forEach((coord) => {
                if ((cells[Number(cell.id) - coord].classList.value) == 'block hide bomb') {
@@ -140,7 +140,7 @@ function checkCell(cell) {
    })
 
    // Проверка Верзнего и нижнего ряда
-   if (Number(cell.id) < 29 && Number(cell.id) > 20) {
+   if (Number(cell.id) < (idSpan + (setting.area - 1)) && Number(cell.id) > idSpan) {
       cellHover = 5;
       coordsTop.forEach((event) => {
          if ((cells[Number(cell.id) - event].classList.value) == 'block hide bomb') {
@@ -148,7 +148,7 @@ function checkCell(cell) {
          }
       })
    }
-   if (Number(cell.id) < 119 && Number(cell.id) > 110) {
+   if (Number(cell.id) < (idSpan + setting.area * setting.area - 1) && Number(cell.id)) > (idSpan + setting.area * setting.area - setting.area)) {
       cellHover = 6;
       coordsBottom.forEach((event) => {
          if ((cells[Number(cell.id) - event].classList.value) == 'block hide bomb') {
