@@ -61,7 +61,7 @@ function addBombs() {
    cells.forEach((elem) => {
       elem.classList.remove('bomb');
    })
-   bombs = generateArrayRandomNumber(20, 120);
+   bombs = generateArrayRandomNumber(20, list.value*list.value+20);
    for (let i = 0; i < valueMiens.value; i++) {
       cells.forEach((elem) => {
          if (elem.id == bombs[i]) {
