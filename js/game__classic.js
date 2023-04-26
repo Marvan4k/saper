@@ -152,7 +152,7 @@ function checkCell(cell) {
          }
       })
    }
-   if (Number(cell.id) < (idSpan + setting.area * setting.area - 1) && Number(cell.id)) > (idSpan + setting.area * setting.area - setting.area) {
+   if (Number(cell.id) < (idSpan + setting.area * setting.area - 1) && Number(cell.id) > (idSpan + setting.area * setting.area - setting.area) {
       cellHover = 6;
       coordsBottom.forEach((event) => {
          if ((cells[Number(cell.id) - event].classList.value) == 'block hide bomb') {
