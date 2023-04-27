@@ -22,7 +22,6 @@ let hours = 0;
 let cells = document.querySelectorAll(".block");
 let field = setting.area;
 let idSpan = 0;
-let sum = 0;
 let bombs = [];
 let colors = [
   0,
@@ -111,7 +110,8 @@ function checkCell(cell) {
   if (cellId == idSpan) {
     [idSpan + 1, idSpan + valueArea + 1, idSpan + valueArea].forEach((id) => {
       if (cells[id].classList.value == "block hide bomb") {
-        valueBomb++;
+         valueBomb++;
+         cellHover = 1;
       }
     });
       checkCenter = true;
@@ -121,24 +121,27 @@ function checkCell(cell) {
     [idSpan + valueArea - 2, idSpan + valueArea + valueArea - 1, idSpan + valueArea + valueArea - 2].forEach((id) => {
         if (cells[id].classList.value == "block hide bomb") {
           valueBomb++;
+           cellHover = 2;
         }
       });
       checkCenter = true;
   }
   // Левый нижний угол
-  if (cellId == idSpan + setting.area * setting.area - setting.area) {
+   if (cellId == idSpan + setting.area * setting.area - setting.area) {
     [idSpan + valueArea * valueArea - valueArea - valueArea, idSpan + valueArea * valueArea - valueArea + 1, idSpan + valueArea * valueArea - valueArea - valueArea + 1].forEach((id) => {
-      if (cells[id].classList.value == "block hide bomb") {
+       if (cells[id].classList.value == "block hide bomb") {
         valueBomb++;
-      }
+         cellHover = 3;
+       }
     });
       checkCenter = true;
-  }
+   }
   // Правый нижний угол
   if (cellId == idSpan + setting.area * setting.area - 1) {
     [idSpan + valueArea * valueArea - 2, idSpan + valueArea * valueArea - valueArea - 1, idSpan + valueArea * valueArea - valueArea - 2].forEach((id) => {
       if (cells[id].classList.value == "block hide bomb") {
         valueBomb++;
+         cellHover = 4;
       }
     });
       checkCenter = true;
@@ -148,17 +151,19 @@ function checkCell(cell) {
   if (cellId > idSpan && cellId < idSpan + valueArea) {
     [cellId - 1, cellId + 1, cellId + valueArea, cellId + valueArea - 1, cellId + valueArea + 1].forEach((id) => {
       if (cells[id].classList.value == "block hide bomb") {
-        valueBomb++;
+         valueBomb++;
+         cellHover = 5;
       }
     })
       checkCenter = true;
   }
 
   // Нижний ряд
-  if (cellId < idSpan + valueArea * valueArea - 1 && cellId > idSpan + valueArea * valueArea - 1 - valueArea) {
+  if (cellId < idSpan + valueArea * valueArea - 1 && cellId > idSpan + valueArea * valueArea - valueArea) {
     [cellId - 1, cellId + 1, cellId - valueArea, cellId - valueArea - 1, cellId - valueArea + 1].forEach((id) => {
       if (cells[id].classList.value == "block hide bomb") {
-        valueBomb++;
+         valueBomb++;
+         cellHover = 6;
       }
     })
       checkCenter = true;
@@ -169,7 +174,9 @@ function checkCell(cell) {
     if (cellId == item) {
       [cellId - 1, cellId + valueArea, cellId + valueArea - 1, cellId - valueArea, cellId - valueArea - 1].forEach((id) => {
         if (cells[id].classList.value == "block hide bomb") {
-          valueBomb++;
+           valueBomb++;
+           
+         cellHover = 7;
         }
       })
       checkCenter = true;
@@ -181,7 +188,8 @@ function checkCell(cell) {
     if (cellId == item) {
       [cellId + 1, cellId - valueArea, cellId - valueArea + 1, cellId + valueArea, cellId + valueArea + 1].forEach((id) => {
         if (cells[id].classList.value == "block hide bomb") {
-          valueBomb++;
+           valueBomb++;
+           cellHover = 8;
         }
       })
       checkCenter = true;
@@ -192,7 +200,8 @@ function checkCell(cell) {
   if (checkCenter == false) {
       [cellId + 1, cellId - 1, cellId + valueArea, cellId - valueArea, cellId + valueArea - 1, cellId - valueArea - 1, cellId + valueArea + 1, cellId - valueArea + 1].forEach((id) => {
         if (cells[id].classList.value == "block hide bomb") {
-          valueBomb++;
+           valueBomb++;
+           cellHover = 9;
         }
       })
   }
@@ -208,12 +217,12 @@ function checkBomb(cell) {
   if (cells[Number(cell.id)].classList.value == "block hide bomb") {
     cell.textContent = " ";
   } else {
-    if (valueBomb == 0) {
+     if (valueBomb == 0) {
       cell.textContent = " ";
-    } else {
+   } else {
       cell.textContent = valueBomb;
       cell.style.color = `${colors[valueBomb]}`;
-    }
+   }
   }
 }
 // Обновление бомб (Функция)
@@ -365,10 +374,10 @@ document.querySelector(".field-lose>button").addEventListener("click", () => {
 
 // Подсказка
 function checkClue(number) {
-  if (cells[bombs[number] - 20].dataset["flag"] != "true") {
-    cells[bombs[number] - 20].dataset["clue"] = true;
+  if (cells[bombs[number]].dataset["flag"] != "true") {
+    cells[bombs[number]].dataset["clue"] = true;
   } else {
-    temp = Math.floor(Math.random() * 20);
+    temp = Math.floor(Math.random() * kolBomb);
     checkClue(temp);
   }
 }
@@ -440,9 +449,9 @@ function leftClick(item) {
       valueCell--;
     }
     item.classList.remove("hide");
-    // if (item.classList.value != "block bomb") {
-    //   checkAirCell(item);
-    // }
+   //  if (item.classList.value != "block bomb") {
+   //    checkAirCell(item);
+   //  }
     if (item.classList == "block bomb") {
       item.classList.add("bombActive");
       gameover(item);
@@ -487,135 +496,52 @@ function rightClick(item) {
 }
 
 // Открытие соседних ячеек
-// function checkAirCell(item) {
-//    checkAirCellMassive.push(item);
-//    //while (openingCell == true) {
-//       checkBomb(item);
-//       if (item.textContent == ' ') {
-//          openingCell = false;
-//          if (cellHover == 1) {
-//             checkAirCellMassive.length = 0;
-//             coordsLeftUp.forEach((coord) => {
-//                if (cells[Number(item.id) - coord].classList.value != 'block') {
-//                   valueCell--;
-//                }
-//                cells[Number(item.id) - coord].classList.remove('hide');
-//                checkBomb(cells[Number(item.id) - coord]);
-//                if (cells[Number(item.id) - coord].textContent == ' ') {
-//                   checkAirCellMassive.push(cells[Number(item.id) - coord]);
-//                   openingCell = true;
-//                }
-//             })
-//          } else if (cellHover == 2) {
-//             checkAirCellMassive.length = 0;
-//             coordsRightUp.forEach((coord) => {
-//                if (cells[Number(item.id) - coord].classList.value != 'block') {
-//                   valueCell--;
-//                }
-//                cells[Number(item.id) - coord].classList.remove('hide');
-//                checkBomb(cells[Number(item.id) - coord]);
-//                if (cells[Number(item.id) - coord].textContent == ' ') {
-//                   checkAirCellMassive.push(cells[Number(item.id) - coord]);
-//                   openingCell = true;
-//                }
-//             })
-//          } else if (cellHover == 3) {
-//             checkAirCellMassive.length = 0;
-//             coordsLeftDown.forEach((coord) => {
-//                if (cells[Number(item.id) - coord].classList.value != 'block') {
-//                   valueCell--;
-//                }
-//                cells[Number(item.id) - coord].classList.remove('hide');
-//                checkBomb(cells[Number(item.id) - coord]);
-//                if (cells[Number(item.id) - coord].textContent == ' ') {
-//                   checkAirCellMassive.push(cells[Number(item.id) - coord]);
-//                   openingCell = true;
-//                }
-//             })
-//          } else if (cellHover == 4) {
-//             checkAirCellMassive.length = 0;
-//             coordsRightDown.forEach((coord) => {
-//                if (cells[Number(item.id) - coord].classList.value != 'block') {
-//                   valueCell--;
-//                }
-//                cells[Number(item.id) - coord].classList.remove('hide');
-//                checkBomb(cells[Number(item.id) - coord]);
-//                if (cells[Number(item.id) - coord].textContent == ' ') {
-//                   checkAirCellMassive.push(cells[Number(item.id) - coord]);
-//                   openingCell = true;
-//                }
-//             })
-//          } else if (cellHover == 5) {
-//             checkAirCellMassive.length = 0;
-//             coordsTop.forEach((coord) => {
-//                if (cells[Number(item.id) - coord].classList.value != 'block') {
-//                   valueCell--;
-//                }
-//                cells[Number(item.id) - coord].classList.remove('hide');
-//                checkBomb(cells[Number(item.id) - coord]);
-//                if (cells[Number(item.id) - coord].textContent == ' ') {
-//                   checkAirCellMassive.push(cells[Number(item.id) - coord]);
-//                   openingCell = true;
-//                }
-//             })
-//          } else if (cellHover == 6) {
-//             checkAirCellMassive.length = 0;
-//             coordsBottom.forEach((coord) => {
-//                if (cells[Number(item.id) - coord].classList.value != 'block') {
-//                   valueCell--;
-//                }
-//                cells[Number(item.id) - coord].classList.remove('hide');
-//                checkBomb(cells[Number(item.id) - coord]);
-//                if (cells[Number(item.id) - coord].textContent == ' ') {
-//                   checkAirCellMassive.push(cells[Number(item.id) - coord]);
-//                   openingCell = true;
-//                }
-//             })
-//          } else if (cellHover == 7) {
-//             checkAirCellMassive.length = 0;
-//             coordsLeft.forEach((coord) => {
-//                if (cells[Number(item.id) - coord].classList.value != 'block') {
-//                   valueCell--;
-//                }
-//                cells[Number(item.id) - coord].classList.remove('hide');
-//                checkBomb(cells[Number(item.id) - coord]);
-//                if (cells[Number(item.id) - coord].textContent == ' ') {
-//                   checkAirCellMassive.push(cells[Number(item.id) - coord]);
-//                   openingCell = true;
-//                }
-//             })
-//          } else if (cellHover == 8) {
-//             checkAirCellMassive.length = 0;
-//             coordsRight.forEach((coord) => {
-//                if (cells[Number(item.id) - coord].classList.value != 'block') {
-//                   valueCell--;
-//                }
-//                cells[Number(item.id) - coord].classList.remove('hide');
-//                checkBomb(cells[Number(item.id) - coord]);
-//                if (cells[Number(item.id) - coord].textContent == ' ') {
-//                   checkAirCellMassive.push(cells[Number(item.id) - coord]);
-//                   openingCell = true;
-//                }
-//             })
-//          } else if (cellHover == 9) {
-//             checkAirCellMassive.length = 0;
-//             coordsCenter.forEach((coord) => {
-//                if (cells[Number(item.id) - coord].classList.value != 'block') {
-//                   valueCell--;
-//                }
-//                cells[Number(item.id) - coord].classList.remove('hide');
-//                checkBomb(cells[Number(item.id) - coord]);
-//                if (cells[Number(item.id) - coord].textContent == ' ') {
-//                   checkAirCellMassive.push(cells[Number(item.id) - coord]);
-//                   openingCell = true;
-//                }
-//             })
-//          }
-//          if (openingCell == false) {
-
-//          }
-//       }
-//    //}
+// function checkAirCell(cell) {
+//    if (cellHover == 1) {
+//            [idSpan + 1, idSpan + valueArea + 1, idSpan + valueArea].forEach((id) => {
+//               checkBomb(cells[id])
+//            });
+//         }
+//         if (cellHover == 2) {
+//            [idSpan + valueArea - 2, idSpan + valueArea + valueArea - 1, idSpan + valueArea + valueArea - 2].forEach((id) => {
+//               checkBomb(cells[id])
+//            });
+//         }
+//         if (cellHover == 3) {
+//            [idSpan + valueArea * valueArea - valueArea - valueArea, idSpan + valueArea * valueArea - valueArea + 1, idSpan + valueArea * valueArea - valueArea - valueArea + 1].forEach((id) => {
+//               checkBomb(cells[id])
+//            });
+//         }
+//         if (cellHover == 4) {
+//            [idSpan + valueArea * valueArea - 2, idSpan + valueArea * valueArea - valueArea - 1, idSpan + valueArea * valueArea - valueArea - 2].forEach((id) => {
+//               checkBomb(cells[id])
+//            });
+//         }
+//         if (cellHover == 5) {
+//            [cell.id - 1, cell.id + 1, cell.id + valueArea, cell.id + valueArea - 1, cell.id + valueArea + 1].forEach((id) => {
+//               checkBomb(cells[id])
+//            });
+//         }
+//         if (cellHover == 6) {
+//            [cell.id - 1, cell.id + 1, cell.id - valueArea, cell.id - valueArea - 1, cell.id - valueArea + 1].forEach((id) => {
+//               checkBomb(cells[id])
+//            });
+//         }
+//         if (cellHover == 7) {
+//            [cell.id - 1, cell.id + valueArea, cell.id + valueArea - 1, cell.id - valueArea, cell.id - valueArea - 1].forEach((id) => {
+//               checkBomb(cells[id])
+//            });
+//         }
+//         if (cellHover == 8) {
+//            [cell.id + 1, cell.id - valueArea, cell.id - valueArea + 1, cell.id + valueArea, cell.id + valueArea + 1].forEach((id) => {
+//               checkBomb(cells[id])
+//            });
+//         }
+//         if (cellHover == 9) {
+//            [cell.id + 1, cell.id - 1, cell.id + valueArea, cell.id - valueArea, cell.id + valueArea - 1, cell.id - valueArea - 1, cell.id + valueArea + 1, cell.id - valueArea + 1].forEach((id) => {
+//               checkBomb(cells[id])
+//            });
+//         }
 // }
 
 // Клики мышкой
