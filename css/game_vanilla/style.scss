@@ -27,6 +27,13 @@ span[data-flag = "true"] {
 .bombActive {
 	background: url(../image/bomb.png) no-repeat center center;
 	background-size: 40px 40px;
+	// &::before {
+	// 	content: ' ';
+	// 	background-image: url(../image/boom.png);
+	// 	background-position: center center;
+	// 	background-repeat: no-repeat;
+	// 	animation: 2s boomBomb;
+	// }
 }
 .block {
 	overflow: hidden;
@@ -161,7 +168,7 @@ span[data-flag = "true"] {
 
 .modeSelectin {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
 	width: 100%;
 	height: 100%;
@@ -178,6 +185,7 @@ span[data-flag = "true"] {
 		position: relative;
 		border: 1px solid black;
 		border-radius: 20px;
+		margin: 0px 20px;
 		& > img {
 			filter: blur(10px);
 			width: 100%;
@@ -205,11 +213,28 @@ span[data-flag = "true"] {
 		margin-bottom: 2em;
 	}
 }
+@media screen and (max-width: 795px) {
+	.modeSelectin {
+		flex-direction: column;
+		justify-content: normal;
+		&__item {
+			margin-top: 20px;
+		}
+	}
+}
 @keyframes openCell {
 	from {
 		opacity: 1;
 	}
 	to {
 		opacity: 9;
+	}
+}
+@keyframes boomBomb {
+	0% {
+		background-size: 0px 0px;
+	}
+	99% {
+		background-size: 80px 80px;
 	}
 }
