@@ -161,7 +161,7 @@ span[data-flag=true] {
 
 .modeSelectin {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -179,6 +179,7 @@ span[data-flag=true] {
   position: relative;
   border: 1px solid black;
   border-radius: 20px;
+  margin: 0px 20px;
 }
 .modeSelectin__item > img {
   filter: blur(10px);
@@ -205,6 +206,15 @@ span[data-flag=true] {
     margin-bottom: 2em;
   }
 }
+@media screen and (max-width: 795px) {
+  .modeSelectin {
+    flex-direction: column;
+    justify-content: normal;
+  }
+  .modeSelectin__item {
+    margin-top: 20px;
+  }
+}
 @-webkit-keyframes openCell {
   from {
     opacity: 1;
@@ -219,5 +229,21 @@ span[data-flag=true] {
   }
   to {
     opacity: 9;
+  }
+}
+@-webkit-keyframes boomBomb {
+  0% {
+    background-size: 0px 0px;
+  }
+  99% {
+    background-size: 80px 80px;
+  }
+}
+@keyframes boomBomb {
+  0% {
+    background-size: 0px 0px;
+  }
+  99% {
+    background-size: 80px 80px;
   }
 }
